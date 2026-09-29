@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Frage 2</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+font-family:Arial,sans-serif;
+height:100vh;
+overflow:hidden;
+}
+
+header{
+height:80px;
+background:#1d1d1d;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:26px;
+font-family:Georgia,serif;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.info{
+width:1100px;
+margin:30px auto;
+background:#222;
+color:white;
+padding:20px;
+font-size:28px;
+font-weight:bold;
+line-height:1.4;
+border-radius:8px;
+}
+
+.eingabe{
+display:flex;
+justify-content:center;
+margin-top:80px;
+}
+
+.eingabe input{
+width:280px;
+height:170px;
+background:linear-gradient(#b96dff,#8846ff);
+border:3px solid white;
+border-radius:25px;
+text-align:center;
+font-size:90px;
+font-weight:bold;
+color:white;
+outline:none;
+}
+
+.weiter{
+display:block;
+margin:110px auto;
+width:500px;
+height:95px;
+background:linear-gradient(#b96dff,#8846ff);
+border:none;
+border-radius:20px;
+font-size:80px;
+color:black;
+cursor:pointer;
+}
+
+.weiter:hover{
+transform:scale(1.05);
+}
+
+
+/* ===== Neuer Hase rechts ===== */
+.hase-rechts{
+    position:absolute;
+    right:35px;
+    top:115px;
+    width:360px;
+    z-index:2;
+}
+.hase-rechts img{
+    width:100%;
+    height:auto;
+    display:block;
+    border:5px solid black;
+    border-radius:6px;
+}
+@media (max-width:1100px){
+    .hase-rechts{
+        right:18px;
+        top:105px;
+        width:290px;
+    }
+}
+@media (max-width:900px){
+    .hase-rechts{
+        right:12px;
+        top:90px;
+        width:240px;
+    }
+}
+
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+
+</header>
+
+<!-- Neuer Hase rechts -->
+<div class="hase-rechts">
+    <img src="hase-liegend.png" alt="Liegender Hase">
+</div>
+
+
+<div class="info">
+
+<b>2. Frage:</b> Wann wurde der Peststadel zerstört?<br>
+
+Nehmt euch diese Zahl und bildet solange die Quersumme
+(addiert alle Ziffern), bis eine 1-stellige Zahl übrig bleibt.
+Tragt diese hier ein:
+
+</div>
+
+
+<div class="eingabe">
+
+<input
+id="zahl"
+type="text"
+maxlength="1"
+inputmode="numeric">
+
+</div>
+
+
+<button class="weiter" onclick="weiter()">
+
+&#10140;
+
+</button>
+
+
+
+<!-- Hase-Audio -->
+<audio id="haseAudio" preload="auto">
+    <source src="audio-seite3-hase.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function(){
+    const audio = document.getElementById("haseAudio");
+
+    function starten(){
+        audio.play().catch(function(){});
+    }
+
+    window.addEventListener("load", function(){
+        setTimeout(starten, 150);
+    });
+
+    /* Falls Fully Kiosk Autoplay blockiert: erster Tipp startet das Audio. */
+    document.addEventListener("pointerdown", function(){
+        if(audio.paused){
+            audio.play().catch(function(){});
+        }
+    }, {once:true});
+})();
+</script>
+
+<script>
+
+function weiter(){
+
+let zahl=document.getElementById("zahl").value;
+
+if(!/^[1-9]$/.test(zahl)){
+
+alert("Bitte gib genau eine Zahl von 1 bis 9 ein.");
+
+return;
+
+}
+
+localStorage.setItem("q2", zahl);
+
+window.location.href="seite5.html";
+
+}
+
+
+// Verhindert Eingabe von Buchstaben und 0 direkt beim Tippen
+
+document.getElementById("zahl").addEventListener("input", function(){
+
+this.value = this.value.replace(/[^1-9]/g, "");
+
+});
+
+</script>
+
+
+</body>
+</html>

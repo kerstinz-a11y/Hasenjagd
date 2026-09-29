@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Auswertung</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+font-family:Arial,sans-serif;
+min-height:100vh;
+padding-bottom:40px;
+}
+
+header{
+height:80px;
+background:#1f1f1f;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+header h1{
+color:white;
+font-size:28px;
+font-family:Georgia,serif;
+white-space:nowrap;
+}
+
+.titel{
+width:94%;
+margin:20px auto;
+background:#1f1f1f;
+color:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+line-height:1.5;
+}
+
+.titel h2{
+font-size:42px;
+margin-bottom:15px;
+}
+
+.titel p{
+font-size:24px;
+font-weight:bold;
+}
+
+.anzahl{
+width:320px;
+margin:25px auto;
+background:linear-gradient(#b96dff,#8846ff);
+color:white;
+border-radius:25px;
+padding:18px;
+text-align:center;
+font-size:34px;
+font-weight:bold;
+}
+
+#fehlerContainer{
+width:94%;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.fehler{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:20px;
+}
+
+.frage{
+width:48%;
+background:#c62828;
+color:white;
+padding:20px;
+border-radius:10px;
+font-size:22px;
+font-weight:bold;
+line-height:1.4;
+}
+
+.antwort{
+width:48%;
+background:#1f1f1f;
+color:white;
+padding:20px;
+border-radius:10px;
+}
+
+.antwort h3{
+margin-bottom:15px;
+font-size:24px;
+}
+
+.option{
+display:flex;
+align-items:center;
+margin:15px 0;
+font-size:22px;
+}
+
+.option input{
+width:25px;
+height:25px;
+margin-right:15px;
+cursor:pointer;
+}
+
+.auswerten{
+display:block;
+margin:40px auto;
+width:450px;
+height:90px;
+border:none;
+border-radius:20px;
+background:linear-gradient(#b96dff,#8846ff);
+font-size:42px;
+font-weight:bold;
+color:black;
+cursor:pointer;
+transition:.2s;
+}
+
+.auswerten:hover{
+transform:scale(1.05);
+}
+
+.richtig{
+background:#2e7d32 !important;
+}
+
+
+
+/* Tablet-Feinschliff: kompakte Auswertung ohne Scrollen */
+@media (max-width:1400px), (max-height:900px){
+    body{padding-bottom:8px;}
+    header{height:58px;}
+    header h1{font-size:clamp(18px,2.2vw,25px);}
+    .titel{width:96%;margin:10px auto 8px;padding:10px 14px;line-height:1.15;}
+    .titel h2{font-size:clamp(24px,3vw,34px);margin-bottom:5px;}
+    .titel p{font-size:clamp(14px,1.5vw,19px);line-height:1.15;}
+    .anzahl{width:230px;margin:8px auto 10px;padding:8px;font-size:24px;border-radius:18px;}
+    #fehlerContainer{width:96%;gap:10px;}
+    .fehler{gap:10px;align-items:stretch;}
+    .frage{width:50%;padding:9px 11px;font-size:clamp(14px,1.45vw,19px);line-height:1.15;border-radius:7px;}
+    .antwort{width:50%;padding:8px 10px;}
+    .antwort h3{margin-bottom:7px;font-size:clamp(17px,1.8vw,22px);}
+    .option{margin:6px 0;font-size:clamp(16px,1.7vw,21px);line-height:1.15;}
+    .option input{width:18px;height:18px;margin-right:8px;}
+    .antwort input[type=text]{width:75px !important;height:34px !important;font-size:24px !important;}
+    .auswerten{margin:10px auto 0;width:260px;height:55px;font-size:27px;border-radius:14px;}
+}
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h1>HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER</h1>
+</header>
+
+<div class="titel">
+
+<h2>Gratulation!</h2>
+
+<p>
+Ihr habt alle Rätsel beantwortet und seid eurem Schatz ein gutes Stück näher!<br>
+Schauen wir mal, ob alle Antworten richtig sind oder ob es falsche Antworten gibt.<br><br>
+Hier kommt die Liste der falschen Antworten:
+</p>
+
+</div>
+
+<div class="anzahl">
+Anzahl Fehler:
+<span id="anzahlFehler">0</span>
+</div>
+
+<div id="fehlerContainer">
+
+</div>
+
+<button class="auswerten" onclick="auswerten()">
+Auswertung
+</button>
+
+<script>
+
+const fragen = [
+
+{
+id:"q1",
+frage:"Woher stammt der Name „PESTSTADEL“?",
+richtig:"Remise für Pestkarren im Mittelalter",
+antworten:[
+"Herberge für Pestkranke im Mittelalter",
+"Remise für Pestkarren im Mittelalter",
+"Scheune für pestkranke Tiere im Mittelalter"
+]
+},
+
+{
+id:"q2",
+frage:"Wann wurde der Peststadel zerstört? (Quersumme)",
+richtig:"1",
+eingabe:true
+},
+
+{
+id:"q3",
+frage:"Welche Hausnummer trägt das Haus?",
+richtig:"8",
+eingabe:true
+},
+
+{
+id:"q4",
+frage:"Welche Zahlen zeigt der Zeitmesser am Fembohaus?",
+richtig:"römisch",
+antworten:[
+"römisch",
+"arabisch",
+"chinesisch"
+]
+},
+
+{
+id:"q5",
+frage:"Welcher Baustil prägt die Sebalduskirche hauptsächlich?",
+richtig:"Gotik",
+antworten:[
+"Gotik",
+"Renaissance",
+"Barock"
+]
+},
+
+{
+id:"q6",
+frage:"Für welchen berühmten Mann wurde der Brunnen gebaut?",
+richtig:"Willibald Pirckheimer",
+antworten:[
+"Martin Behaim",
+"Willibald Pirckheimer",
+"Hans Sachs"
+]
+},
+
+{
+id:"q7",
+frage:"Welche Form tragen die Butzenfenster?",
+richtig:"rund",
+antworten:[
+"dreieckig",
+"rechteckig",
+"rund"
+]
+},
+
+{
+id:"q8",
+frage:"Was versteckt der Hase unter seinen Pfoten?",
+richtig:"Fuß",
+antworten:[
+"Fuß",
+"Kopf",
+"Karotte"
+]
+},
+
+{
+id:"q9",
+frage:"Was hält Dürer in seiner Hand?",
+richtig:"Pinsel, Stift und Lorbeerzweig",
+antworten:[
+"Kreuz",
+"Nichts",
+"Pinsel, Stift und Lorbeerzweig"
+]
+},
+
+{
+id:"q10",
+frage:"Hat das Nashorn die Augen offen oder geschlossen?",
+richtig:"geschlossen",
+antworten:[
+"geschlossen",
+"offen"
+]
+}
+
+];
+
+function auswerten(){
+
+const container=document.getElementById("fehlerContainer");
+
+container.innerHTML="";
+
+let fehler=0;
+
+fragen.forEach(f=>{
+
+const gespeichert=(localStorage.getItem(f.id)||"").toLowerCase();
+
+if(gespeichert!==f.richtig.toLowerCase()){
+
+fehler++;
+
+const block=document.createElement("div");
+block.className="fehler";
+
+const links=document.createElement("div");
+links.className="frage";
+links.innerHTML="<b>"+f.frage+"</b>";
+
+const rechts=document.createElement("div");
+rechts.className="antwort";
+
+rechts.innerHTML="<h3>Bitte wähle neu aus:</h3>";
+
+if(f.eingabe){
+
+rechts.innerHTML+=
+"<input type='text' id='"+f.id+"' maxlength='1' style='width:140px;height:60px;font-size:40px;text-align:center;border-radius:12px;'>";
+
+}else{
+
+f.antworten.forEach(a=>{
+
+rechts.innerHTML+=`
+<label class="option">
+<input type="radio" name="${f.id}" value="${a}">
+${a}
+</label>
+`;
+
+});
+
+}
+
+block.appendChild(links);
+block.appendChild(rechts);
+
+container.appendChild(block);
+
+}
+
+});
+
+document.getElementById("anzahlFehler").innerText=fehler;
+
+if(fehler===0){
+
+window.location.href="seite15.html";
+
+}
+
+}
+
+function speichernUndPruefen(){
+
+fragen.forEach(f=>{
+
+if(f.eingabe){
+
+const feld=document.getElementById(f.id);
+
+if(feld){
+
+localStorage.setItem(f.id, feld.value.trim());
+
+}
+
+}else{
+
+const auswahl=document.querySelector('input[name="'+f.id+'"]:checked');
+
+if(auswahl){
+
+localStorage.setItem(f.id, auswahl.value);
+
+}
+
+}
+
+});
+
+auswerten();
+
+}
+
+document.querySelector(".auswerten").onclick=speichernUndPruefen;
+
+auswerten();
+
+</script>
+
+
+<!-- Automatischer Start der Audio für die Auswertung -->
+<audio id="auswertungAudio" preload="auto">
+  <source src="audio-falsche-antworten.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function(){
+  const audio = document.getElementById("auswertungAudio");
+
+  function startAudio(){
+    audio.play().catch(function(){});
+  }
+
+  window.addEventListener("load", function(){
+    setTimeout(startAudio, 150);
+  });
+
+  // Fallback for browsers/Fully Kiosk configurations that block autoplay:
+  document.addEventListener("pointerdown", function(){
+    if(audio.paused){
+      audio.play().catch(function(){});
+    }
+  }, {once:true});
+})();
+</script>
+
+</body>
+
+</html>

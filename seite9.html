@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seite 9</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
+}
+
+header{
+height:70px;
+background:#1f1f1f;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:24px;
+font-family:Georgia,serif;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.container{
+width:1400px;
+margin:15px auto;
+}
+
+.info{
+background:#222;
+color:white;
+padding:18px;
+font-size:28px;
+font-weight:bold;
+line-height:1.25;
+border-radius:8px;
+}
+
+.info i{
+font-weight:normal;
+}
+
+.buttonbereich{
+display:flex;
+justify-content:center;
+margin-top:18px;
+}
+
+.weiter{
+width:450px;
+height:85px;
+border:none;
+border-radius:20px;
+background:linear-gradient(#b96dff,#8846ff);
+font-size:65px;
+color:black;
+cursor:pointer;
+transition:.25s;
+}
+
+.weiter:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+</header>
+
+<div class="container">
+
+<div class="info">
+
+Lauft nun den Grünstreifen des Maxplatzes weiter stadtauswärts, am barocken Tritonbrunnen vorbei, bis ihr rechts auf eine kleine Straße mit wunderschönen Fachwerkhäusern trefft: die Weißgerbergasse. Wisst ihr, woher ihr Name stammt?
+
+<br><br>
+
+Der Name der Gasse kommt von den Weißgerbern, die im Mittelalter dort ansässig waren und rohe Tierhäute zu feinem, hellen Leder, dem sogenannten Weißleder, verarbeiteten. Da das Gerben der Tierhäute damals sehr viel Wasser beanspruchte und zudem eine nicht unerhebliche Geruchsbelästigung darstellte, kommt es nicht von ungefähr, dass die Handwerkshäuser fast alle über einen privaten Brunnen verfügten und am Ortsausgang in der Nähe der abfließenden Pegnitz angesiedelt waren.
+
+<br><br>
+
+Lauft die Weißgerbergasse ganz bis zum Ende nach oben und über den Weinmarkt zu den schön gestalteten Sitzmöglichkeiten aus Holz auf der linken Seite. Hier könnt ihr gemütlich kurz ausruhen und schließlich linker Hand bergauf die Treppenstufen nehmen, die euch zur Albrecht-Dürer-Straße führen.
+
+<br><br>
+
+<i>Ein barrierefreier Weg geht geradeaus den Weinmarkt entlang bis zur Winklerstraße, an der ihr wieder auf die Sebalduskirche stoßt. Dort geht ihr links den Berg hinauf bis zur „Füll“. In diese biegt ihr links ab und lauft sie entlang, bis ihr auf die Albrecht-Dürer-Straße trefft.</i>
+
+<br><br>
+
+Folgt dieser bis ganz nach oben zum Albrecht-Dürer-Haus: eurer nächsten Rätselstation.
+
+</div>
+
+<div class="buttonbereich">
+
+<button class="weiter"
+onclick="window.location.href='seite10.html'">
+
+&#10140;
+
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>

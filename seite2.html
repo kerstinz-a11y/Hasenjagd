@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasenjagd – Frage 1</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    background-image:url("hintergrund.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    font-family:Arial,sans-serif;
+    height:100vh;
+    overflow:hidden;
+}
+
+header{
+    height:70px;
+    background:#1d1d1d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:28px;
+    font-family:Georgia,serif;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.info{
+    width:72%;
+    margin:22px 0 18px 4%;
+    background:#222;
+    color:white;
+    padding:18px 22px;
+    font-size:25px;
+    line-height:1.4;
+    border-radius:8px;
+}
+
+.hauptbereich{
+    width:92%;
+    margin:0 4%;
+    display:flex;
+    align-items:flex-start;
+    gap:28px;
+}
+
+.quizbereich{
+    width:62%;
+    background:linear-gradient(#b96dff,#8846ff);
+    border-radius:28px;
+    padding:18px 28px;
+    color:white;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+    margin:18px 0;
+    font-size:25px;
+    font-weight:bold;
+}
+
+.option input{
+    width:30px;
+    height:30px;
+    margin-right:20px;
+    cursor:pointer;
+}
+
+.hasenbereich{
+    width:34%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.hasenbereich img{
+    width:min(100%,430px);
+    height:auto;
+    display:block;
+    border:5px solid black;
+    border-radius:6px;
+}
+
+.weiter{
+    display:block;
+    margin:18px auto 0;
+    width:360px;
+    height:75px;
+    background:linear-gradient(#b96dff,#8846ff);
+    border:none;
+    border-radius:20px;
+    font-size:58px;
+    color:black;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.weiter:hover{transform:scale(1.05);}
+.weiter:active{transform:scale(.96);}
+
+/* 10-Zoll-Tablet / Fully Kiosk */
+@media (max-width:900px){
+    header{height:60px;font-size:20px;}
+    .info{
+        width:88%;
+        margin:15px 0 12px 4%;
+        padding:14px 18px;
+        font-size:20px;
+    }
+    .hauptbereich{
+        width:92%;
+        margin:0 4%;
+        gap:18px;
+    }
+    .quizbereich{
+        width:62%;
+        padding:14px 18px;
+    }
+    .option{
+        margin:14px 0;
+        font-size:19px;
+    }
+    .option input{
+        width:26px;
+        height:26px;
+        margin-right:14px;
+    }
+    .hasenbereich{width:35%;}
+    .hasenbereich img{width:100%;max-width:300px;}
+    .weiter{
+        width:270px;
+        height:65px;
+        margin-top:14px;
+        font-size:50px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+</header>
+
+<div class="info">
+
+<b>Folgt dem Egidienplatz bergauf und biegt nach links in die Dr.-Erich-Mulzer-Straße: dort trefft ihr auf den oftmals vergessenen PESTSTADEL.</b>
+
+<br><br>
+
+<b>1. Frage:</b> Woher stammt der Name „PESTSTADEL“?
+
+</div>
+
+<div class="hauptbereich">
+
+    <div class="quizbereich">
+
+        <label class="option">
+            <input type="radio" name="frage1" value="Herberge für Pestkranke im Mittelalter">
+            Herberge für Pestkranke im Mittelalter
+        </label>
+
+        <label class="option">
+            <input type="radio" name="frage1" value="Remise für Pestkarren im Mittelalter">
+            Remise für Pestkarren im Mittelalter
+        </label>
+
+        <label class="option">
+            <input type="radio" name="frage1" value="Scheune für pestkranke Tiere im Mittelalter">
+            Scheune für pestkranke Tiere im Mittelalter
+        </label>
+
+    </div>
+
+    <!-- Der neue Hase rechts daneben -->
+    <div class="hasenbereich">
+        <img src="hase-im-lauf.png" alt="Der laufende Hase">
+    </div>
+
+</div>
+
+<button class="weiter" onclick="weiter()">&#10140;</button>
+
+<!-- Der Hase spricht direkt beim Öffnen -->
+<audio id="haseAudio" preload="auto">
+    <source src="audio-seite2-hase.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const audio = document.getElementById("haseAudio");
+
+function audioStarten(){
+    audio.play().catch(function(){
+        /*
+        Fully Kiosk/Browser können Autoplay nach einer Seitennavigation
+        blockieren. Beim ersten Tippen/Klicken wird dann gestartet.
+        */
+    });
+}
+
+window.addEventListener("load", function(){
+    setTimeout(audioStarten, 150);
+});
+
+document.addEventListener("pointerdown", function(){
+    if(audio.paused){
+        audio.play().catch(function(){});
+    }
+}, {once:true});
+
+function weiter(){
+
+    let auswahl=document.querySelector('input[name="frage1"]:checked');
+
+    if(!auswahl){
+        alert("Bitte wähle zuerst eine Antwort aus.");
+        return;
+    }
+
+    localStorage.setItem("q1", auswahl.value);
+
+    window.location.href="seite4.html";
+}
+
+</script>
+
+</body>
+</html>

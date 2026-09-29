@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seite 7</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:url("hintergrund.jpg") center/cover no-repeat;
+    font-family:Arial,sans-serif;
+    height:100vh;
+    overflow:hidden;
+}
+
+header{
+    height:70px;
+    background:#1d1d1d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font:700 24px Georgia,serif;
+    white-space:nowrap;
+}
+
+.info{
+    width:1050px;
+    margin:15px 0 0 15px;
+    background:#222;
+    color:#fff;
+    padding:16px;
+    border-radius:8px;
+    font-size:27px;
+    font-weight:bold;
+    line-height:1.28;
+}
+
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:15px;
+}
+
+.links{
+    width:720px;
+}
+
+.quiz{
+    margin-top:15px;
+    background:linear-gradient(#b96dff,#8846ff);
+    border-radius:25px;
+    padding:20px 25px;
+    color:#fff;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+    font-size:25px;
+    font-weight:bold;
+    margin:22px 0;
+}
+
+.option input{
+    width:30px;
+    height:30px;
+    margin-right:22px;
+}
+
+.rechts{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-left:0;
+    position:absolute;
+    left:58%;
+    top:83px;
+}
+
+.bilder{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.bilder img{
+    width:135px;
+    height:300px;
+    object-fit:cover;
+    border:3px solid #222;
+}
+
+.weiter{
+    margin-top:25px;
+    width:430px;
+    height:90px;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(#b96dff,#8846ff);
+    font-size:70px;
+    color:#000;
+    cursor:pointer;
+}
+
+
+/* Tablet-Feinschliff */
+@media (max-width:1400px), (max-height:900px){
+    header{height:58px;font-size:clamp(18px,2vw,24px);}
+    .container{padding:10px 12px;gap:16px;align-items:flex-start;}
+    .links{width:58%;min-width:0;}
+    .info{width:100%;margin:0;padding:12px 14px;font-size:27px;line-height:1.2;}
+    .quiz{margin-top:10px;padding:12px 18px;border-radius:20px;}
+    .option{font-size:clamp(18px,2vw,23px);margin:12px 0;}
+    .option input{width:26px;height:26px;margin-right:15px;}
+    .weiter{display:block;margin:14px 0 0 0;width:clamp(260px,28vw,360px);height:clamp(62px,9vh,78px);font-size:clamp(48px,5vw,62px);}
+    .rechts{
+        min-width:0;
+        margin-left:0;
+        align-items:flex-start;
+        position:absolute;
+        left:58%;
+        top:68px;
+    }
+    .bilder{margin-top:0;gap:8px;justify-content:flex-start;}
+    .bilder img{width:clamp(95px,10vw,125px);height:clamp(210px,28vh,260px);}
+    .rechts .bilder{align-self:flex-start;}
+}
+</style>
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+    HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+</header>
+
+<div class="container">
+
+    <div class="links">
+
+        <div class="info">
+            Euer Weg führt euch weiter bergab zur berühmten <b>SEBALDUSKIRCHE.</b><br>
+
+            Albrecht Dürer verbindet viel mit der Nürnberger Pfarrkirche St. Sebald:
+            hier ist er getauft worden und diese seine Pfarrkirche wird er auch im Laufe
+            seines Lebens oft besucht haben. Was er dabei gedacht hat, wenn er „seine“
+            Werke in dieser Kirche gesehen hat, wissen wir heute nicht. Die Werke,
+            zwei farbenfrohe Fenster, zu denen er die Entwürfe geliefert hat, können wir
+            aber heute zum Glück immer noch bewundern: Das Bamberger Fenster und das
+            Pfinzing Fenster (v.l.n.r.).<br><br>
+
+            <b>5. Frage:</b> Welcher Baustil prägt die Kirche hauptsächlich?
+        </div>
+
+        <div class="quiz">
+
+            <label class="option">
+                <input type="radio" name="frage7" value="Gotik">
+                Gotik
+            </label>
+
+            <label class="option">
+                <input type="radio" name="frage7" value="Renaissance">
+                Renaissance
+            </label>
+
+            <label class="option">
+                <input type="radio" name="frage7" value="Barock">
+                Barock
+            </label>
+
+        </div>
+
+        <button class="weiter" onclick="weiter()">&#10140;</button>
+
+    </div>
+
+    <div class="rechts">
+
+        <div class="bilder">
+            <img src="fenster1.jpg" alt="">
+            <img src="fenster2.jpg" alt="">
+        </div>
+
+        <div class="hase-heilig">
+            <img src="hase-mit-heiligenschein.png" alt="Hase mit Heiligenschein">
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function weiter(){
+    const a=document.querySelector('input[name="frage7"]:checked');
+
+    if(!a){
+        alert("Bitte wähle eine Antwort aus.");
+        return;
+    }
+
+    localStorage.setItem("q5", a.value.toLowerCase());
+    window.location.href="seite8.html";
+}
+</script>
+
+</body>
+</html>

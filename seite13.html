@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seite 13</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
+}
+
+header{
+height:70px;
+background:#1f1f1f;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 3px 8px rgba(0,0,0,.5);
+}
+
+header h1{
+color:white;
+font-size:24px;
+font-family:Georgia,serif;
+letter-spacing:1px;
+white-space:nowrap;
+}
+
+.textbox{
+width:52%;
+margin:12px 0 12px 4%;
+background:rgba(0,0,0,.85);
+padding:15px;
+color:white;
+font-size:24px;
+font-weight:bold;
+line-height:1.22;
+border-radius:8px;
+}
+
+.unten{
+width:92%;
+margin:0 4%;
+display:flex;
+justify-content:flex-start;
+align-items:flex-start;
+gap:24px;
+}
+
+.quizbox{
+width:54%;
+background:linear-gradient(135deg,#7c36ff,#b96cff);
+border-radius:25px;
+padding:18px 25px;
+}
+
+.option{
+display:flex;
+align-items:center;
+margin:20px 0;
+font-size:23px;
+font-weight:bold;
+color:white;
+}
+
+.option input{
+width:28px;
+height:28px;
+margin-right:18px;
+cursor:pointer;
+}
+
+.rechts{
+width:32%;
+display:flex;
+justify-content:flex-start;
+}
+
+.rechts img{
+width:100%;
+max-height:270px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.buttonbereich{
+margin:12px 0 0 35px;
+}
+
+.weiter{
+width:400px;
+height:80px;
+border:none;
+border-radius:20px;
+background:linear-gradient(135deg,#7c36ff,#b96cff);
+font-size:60px;
+font-weight:bold;
+color:black;
+cursor:pointer;
+transition:.2s;
+}
+
+.weiter:hover{
+transform:scale(1.05);
+}
+
+.weiter:active{
+transform:scale(.96);
+}
+
+@media (max-width:1400px), (max-height:900px){
+    .textbox{width:52%; margin:10px 0 10px 4%; padding:12px 15px; font-size:36px !important; line-height:1.18;}
+    .unten{width:92%; margin:0 4%; gap:24px; justify-content:flex-start;}
+    .quizbox{width:52%; padding:12px 18px;}
+    .option{margin:10px 0; font-size:clamp(17px,1.85vw,22px);}
+    .option input{width:25px; height:25px; margin-right:14px;}
+    .rechts{width:32%; justify-content:flex-start;}
+    .rechts img{width:100%; max-width:320px; max-height:250px; object-fit:cover;}
+    .buttonbereich{margin:10px 4% 0;}
+    .weiter{width:clamp(260px,28vw,360px); height:clamp(62px,9vh,78px); font-size:clamp(48px,5vw,62px);}
+}
+
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER</h1>
+
+</header>
+
+<div class="textbox">
+
+Verlasst jetzt den Platz durch das kleine Halbwachsengässchen linker Hand. Nehmt die Glöckleinsgasse und ihr trefft rechter Hand auf die Polizeiwache Rathaus in der Theresienstraße. Dieser folgt ihr ca. 300 m geradeaus, bis ihr wieder am Egidienplatz angelangt seid – eurem Startpunkt.
+
+<br><br>
+
+Hier wartet eure letzte Outdoor-Station: das schlafende Nashorn! Diese Skulptur erschuf Dorota Hadrian 2016 im Rahmen des 20-jährigen Jubiläums des Krakauer Hauses in Bezug auf Dürers Kupferstich „Rhinocerus“. Während Dürers Darstellung das Tier als Symbol von Kraft und Fremdheit zeigt, stellt Hadrian ein ruhendes, verletzliches Nashorn dar.
+
+<br><br>
+
+<b>10. Frage: Hat das Nashorn die Augen offen oder geschlossen?</b>
+
+</div>
+
+<div class="unten">
+
+<div class="quizbox">
+
+<label class="option">
+<input type="radio" name="antwort" value="geschlossen">
+geschlossen
+</label>
+
+<label class="option">
+<input type="radio" name="antwort" value="offen">
+offen
+</label>
+
+</div>
+
+<div class="rechts">
+
+<img src="hase-mit-nashorn.png" alt="Nashorn">
+
+</div>
+
+</div>
+
+<div class="buttonbereich">
+
+<button class="weiter" onclick="weiter()">
+
+&#10140;
+
+</button>
+
+</div>
+
+<script>
+
+function weiter(){
+
+const auswahl = document.querySelector('input[name="antwort"]:checked');
+
+if(!auswahl){
+
+alert("Bitte wähle eine Antwort aus.");
+
+return;
+
+}
+
+localStorage.setItem("q10", auswahl.value.toLowerCase());
+
+window.location.href = "seite14.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

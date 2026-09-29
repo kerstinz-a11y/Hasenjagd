@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Frage 3</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+font-family:Arial,sans-serif;
+height:100vh;
+overflow:hidden;
+}
+
+header{
+height:65px;
+background:#1d1d1d;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:24px;
+font-family:Georgia,serif;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.inhalt{
+width:1100px;
+margin:15px auto;
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:25px;
+}
+
+.info{
+width:790px;
+background:#222;
+color:white;
+padding:18px;
+font-size:20px;
+font-weight:bold;
+line-height:1.2;
+border-radius:8px;
+}
+
+.eingabe{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:80px;
+}
+
+.eingabe input{
+width:180px;
+height:130px;
+background:linear-gradient(#b96dff,#8846ff);
+border:3px solid white;
+border-radius:22px;
+text-align:center;
+font-size:70px;
+font-weight:bold;
+color:white;
+outline:none;
+}
+
+.weiter{
+display:block;
+margin:20px auto;
+width:380px;
+height:75px;
+background:linear-gradient(#b96dff,#8846ff);
+border:none;
+border-radius:20px;
+font-size:60px;
+color:black;
+cursor:pointer;
+transition:.2s;
+}
+
+.weiter:hover{
+transform:scale(1.05);
+}
+
+
+/* ===== Hase mit Greif links ===== */
+.hase-greif-links{
+    position:absolute;
+    left:25px;
+    top:95px;
+    width:330px;
+    z-index:3;
+}
+.hase-greif-links img{
+    width:100%;
+    height:auto;
+    display:block;
+    border:5px solid black;
+    border-radius:6px;
+}
+@media (max-width:1100px){
+    .hase-greif-links{
+        left:12px;
+        top:90px;
+        width:270px;
+    }
+}
+@media (max-width:900px){
+    .hase-greif-links{
+        left:8px;
+        top:82px;
+        width:220px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+
+</header>
+
+<!-- Zusätzliches Hasenfoto links -->
+<div class="hase-greif-links">
+    <img src="hase-mit-greif.png" alt="Hase mit Greif">
+</div>
+
+
+<div class="inhalt">
+
+<div class="info">
+
+<b>3. Frage: Welche Hausnummer trägt das Haus?</b>
+
+<br><br>
+
+Lauft weiter bis zur Tetzelgasse, biegt links ab und gleich wieder rechts in die Stöpselgasse. Könnt ihr erahnen, woher dieser Straßenname stammt?
+
+<br><br>
+
+Der Name stammt von den Handwerkern, die dort früher lebten. Sie fertigten kleine Verschlüsse und Stöpsel für Holzfässer an.
+
+<br><br>
+
+Lauft solange die Stöpselgasse entlang, bis diese ganz schmal wird und ihr auf die Burgstraße trefft.
+
+<br><br>
+
+Wandert rechter Hand an der Hauswand entlang. Das Eckhaus an der Burgstraße ist mit einem mittelalterlichen Tier geschmückt – einem goldenen Greif.
+
+<br><br>
+
+Welche Hausnummer trägt das Haus?
+
+</div>
+
+
+<div class="eingabe">
+
+<input
+id="hausnummer"
+type="text"
+maxlength="1"
+inputmode="numeric">
+
+</div>
+
+</div>
+
+
+<button class="weiter" onclick="weiter()">
+
+&#10140;
+
+</button>
+
+
+<script>
+
+function weiter(){
+
+let zahl=document.getElementById("hausnummer").value;
+
+if(!/^[1-9]$/.test(zahl)){
+
+alert("Bitte gib die einstellige Hausnummer ein.");
+
+return;
+
+}
+
+localStorage.setItem("q3", zahl);
+
+window.location.href="seite6.html";
+
+}
+
+
+// Nur Zahlen 1–9 erlauben
+
+document.getElementById("hausnummer").addEventListener("input",function(){
+
+this.value=this.value.replace(/[^1-9]/g,"");
+
+});
+
+</script>
+
+</body>
+</html>

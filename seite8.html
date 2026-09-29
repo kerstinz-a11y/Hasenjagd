@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seite 8</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
+}
+
+header{
+height:70px;
+background:#1d1d1d;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:24px;
+font-family:Georgia,serif;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.container{
+width:1400px;
+margin:15px auto;
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+}
+
+.links{
+width:900px;
+}
+
+.info{
+background:#222;
+color:white;
+padding:18px;
+border-radius:8px;
+font-size:27px;
+font-weight:bold;
+line-height:1.25;
+}
+
+.quiz{
+margin-top:18px;
+width:620px;
+background:linear-gradient(#b96dff,#8846ff);
+border-radius:24px;
+padding:20px 25px;
+}
+
+.option{
+display:flex;
+align-items:center;
+margin:20px 0;
+font-size:24px;
+font-weight:bold;
+color:white;
+}
+
+.option input{
+width:30px;
+height:30px;
+margin-right:22px;
+cursor:pointer;
+}
+
+.rechts{
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-left:20px;
+}
+
+.rechts img{
+width:300px;
+height:430px;
+object-fit:cover;
+border-radius:6px;
+margin-bottom:20px;
+}
+
+.weiter{
+width:430px;
+height:85px;
+border:none;
+border-radius:20px;
+background:linear-gradient(#b96dff,#8846ff);
+font-size:65px;
+color:black;
+cursor:pointer;
+transition:.25s;
+}
+
+.weiter:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+</header>
+
+<div class="container">
+
+<div class="links">
+
+<div class="info">
+
+Lauft über den Sebalder Platz bis ans Ende der Kirche und biegt leicht links ab bergab in die Winklerstraße. Dieser folgt ihr bergab, bis ihr rechts auf die Schusterstraße trefft. Die Schusterstraße führt euch immer geradeaus zum berühmten Nürnberger Spielzeugmuseum in der Karlstraße. Wenn ihr die Karlstraße weiter bergab lauft, schneidet sie die Weintraubengasse. Hier biegt ihr rechts ab. Schon von Weitem seht ihr links den golden glänzenden Brunnen: den <b>DÜRER-???-BRUNNEN.</b>
+
+<br><br>
+
+<b>6. Frage:</b>
+
+Für welchen berühmten Mann stehen die Fragezeichen?
+
+Zu wessen Ehren neben Dürer wurde der Brunnen gebaut?
+
+</div>
+
+<div class="quiz">
+
+<label class="option">
+
+<input type="radio" name="frage8" value="Martin Behaim">
+
+Martin Behaim
+
+</label>
+
+<label class="option">
+
+<input type="radio" name="frage8" value="Willibald Pirckheimer">
+
+Willibald Pirckheimer
+
+</label>
+
+<label class="option">
+
+<input type="radio" name="frage8" value="Hans Sachs">
+
+Hans Sachs
+
+</label>
+
+</div>
+
+</div>
+
+<div class="rechts">
+
+<img src="brunnen.jpg">
+
+<div class="hase-badend">
+    <img src="hase-badend.png" alt="Hase badend">
+</div>
+
+<button class="weiter" onclick="weiter()">
+
+&#10140;
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function weiter(){
+
+let antwort=document.querySelector('input[name="frage8"]:checked');
+
+if(!antwort){
+
+alert("Bitte wähle eine Antwort aus.");
+
+return;
+
+}
+
+localStorage.setItem("q6", antwort.value.toLowerCase());
+
+window.location.href="seite9.html";
+
+}
+
+</script>
+
+
+<!-- Kleine Hasenstimme bei der Antwortauswahl -->
+<audio id="haseAntwortAudio" preload="auto">
+    <source src="audio-hase-badend.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function(){
+    const audio = document.getElementById("haseAntwortAudio");
+
+    document.querySelectorAll('input[name="frage8"]').forEach(function(option){
+        option.addEventListener("change", function(){
+            audio.currentTime = 0;
+            audio.play().catch(function(){});
+        });
+    });
+})();
+</script>
+
+
+</body>
+
+</html>

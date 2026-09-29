@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seite 16</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:url("hintergrund.jpg") center/cover no-repeat;
+    font-family:Arial,sans-serif;
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
+/* =========================
+   KOPFZEILE
+========================= */
+
+header{
+    width:100%;
+    height:62px;
+
+    background:#1f1f1f;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-family:Georgia,serif;
+    font-size:28px;
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+
+/* =========================
+   SEITE 16 – ZAHLENCODE
+========================= */
+
+.hauptbereich{
+    position:relative;
+    width:100%;
+    height:calc(100vh - 62px);
+    min-height:0;
+    flex:1;
+}
+
+/* Auf dieser Seite ist der Titel bewusst ausgeblendet. */
+.titel{display:none;}
+
+.info{
+    position:absolute;
+    left:15px;
+    top:12px;
+    width:79%;
+    min-height:183px;
+
+    background:#7333a6;
+    color:white;
+    border:2px solid #222;
+    border-radius:20px;
+
+    padding:30px 18px 20px;
+
+    font-size:28px;
+    line-height:1.45;
+    text-align:center;
+}
+
+.zahlenfeld{
+    position:absolute;
+    left:24px;
+    top:225px;
+    width:216px;
+    height:223px;
+    padding:0;
+    display:block;
+}
+
+.zahlenfeld img{
+    width:216px;
+    height:auto;
+    display:block;
+}
+
+.inhalt{
+    position:static;
+    display:block;
+    min-width:0;
+}
+
+.frage{
+    position:absolute;
+    left:250px;
+    width:842px;
+    height:56px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 80px 152px;
+    gap:26px;
+    align-items:center;
+}
+
+.frage:nth-of-type(2){top:265px;}
+.frage:nth-of-type(3){top:346px;}
+
+.fragetext{
+    height:36px;
+    background:white;
+    border:1px solid #777;
+    border-radius:6px;
+    padding:5px 10px;
+    font-size:20px;
+    line-height:24px;
+    font-weight:bold;
+    color:#111;
+    white-space:nowrap;
+}
+
+.antwort{
+    width:80px;
+    height:56px;
+    background:white;
+    border:1px solid #777;
+    border-radius:9px;
+    padding:3px;
+    font-size:42px;
+    line-height:48px;
+    font-weight:bold;
+    color:#111;
+    text-align:center;
+    white-space:nowrap;
+}
+
+.ziffer{
+    position:relative;
+    width:152px;
+    height:56px;
+    background:white;
+    border:1px solid #777;
+    border-radius:9px;
+    color:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    font-weight:bold;
+    margin:0;
+}
+
+.ziffer:after{display:none;}
+
+.unterezeile{
+    position:absolute;
+    left:250px;
+    top:405px;
+    width:842px;
+    height:80px;
+    display:block;
+}
+
+.hinweis{
+    width:100%;
+    height:80px;
+    background:#7333a6;
+    color:white;
+    border:2px solid #222;
+    border-radius:16px;
+    padding:22px 14px;
+    font-size:22px;
+    line-height:1.2;
+    font-weight:bold;
+}
+
+.unterezeile .ziffer{display:none;}
+
+.weiter{
+    position:absolute;
+    left:250px;
+    top:582px;
+    width:536px;
+    height:107px;
+
+    background:#7333a6;
+    color:#000;
+    border:2px solid white;
+    border-radius:17px;
+
+    font-size:0;
+    cursor:pointer;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.2s;
+    z-index:20;
+}
+
+.weiter:after{
+    content:"";
+    display:block;
+    width:130px;
+    height:50px;
+    background:#000;
+    clip-path:polygon(0 20%,62% 20%,62% 0,100% 50%,62% 100%,62% 80%,0 80%);
+}
+
+.weiter:hover{transform:scale(1.03);background:#7333a6;}
+.weiter:active{transform:scale(.98);}
+
+/* Responsive Anpassung für kleinere Tablets */
+@media (max-width:1000px){
+    .info{font-size:22px;min-height:150px;padding:22px 15px 15px;}
+    .zahlenfeld{left:18px;top:195px;width:180px;height:auto;}
+    .zahlenfeld img{width:180px;}
+    .frage{left:210px;width:calc(100% - 240px);grid-template-columns:minmax(0,1fr) 70px 130px;gap:14px;}
+    .frage:nth-of-type(2){top:255px;}
+    .frage:nth-of-type(3){top:326px;}
+    .fragetext{font-size:17px;height:34px;line-height:22px;}
+    .antwort{width:70px;height:52px;font-size:38px;line-height:45px;}
+    .ziffer{width:130px;height:52px;font-size:20px;}
+    .unterezeile{left:210px;top:332px;width:calc(100% - 240px);height:72px;}
+    .hinweis{height:72px;font-size:18px;padding:18px 12px;}
+    .weiter{left:210px;top:465px;width:430px;height:88px;}
+}
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+
+</header>
+
+
+<div class="hauptbereich">
+
+    <div class="zahlenfeld">
+        <img src="zahlenfeld.png" alt="Zahlenfeld">
+    </div>
+
+    <div class="inhalt">
+
+        <div class="info">
+            Lauft nun zum PORTAL Nürnberg und betrachtet euren bisherigen Erfolg:<br>
+            ihr habt bereits 2 der 3 Ziffern des 3-stelligen Zahlencodes errätselt, den ihr<br>
+            benötigt, um in die Schatzkammer von Albrecht Dürer zu gelangen.
+        </div>
+
+        <div class="frage">
+            <div class="fragetext">Frage 2: Wann wurde der „PESTSTADEL“ zerstört?</div>
+            <div class="antwort">1</div>
+            <div class="ziffer">= Ziffer 1</div>
+        </div>
+
+        <div class="frage">
+            <div class="fragetext">Frage 3: Welche Hausnr. trägt das Haus?</div>
+            <div class="antwort">8</div>
+            <div class="ziffer">= Ziffer 2</div>
+        </div>
+
+        <div class="unterezeile">
+            <div class="hinweis">Doch welche ist die 3. Ziffer?</div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- WEITER-PFEIL -->
+
+<button class="weiter" onclick="weiter()" aria-label="Weiter">
+
+    ➜
+
+</button>
+
+
+<script>
+
+function weiter(){
+
+    window.location.href="seite17.html";
+
+}
+
+</script>
+
+
+</body>
+</html>

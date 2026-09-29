@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seite 6</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background-image:url("hintergrund.jpg");
+background-size:cover;
+background-position:center;
+font-family:Arial,sans-serif;
+height:100vh;
+overflow:hidden;
+}
+
+header{
+height:65px;
+background:#1d1d1d;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:24px;
+font-family:Georgia,serif;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.info{
+width:1200px;
+margin:15px auto;
+background:#222;
+color:white;
+padding:18px;
+border-radius:8px;
+font-size:27px;
+font-weight:bold;
+line-height:1.25;
+}
+
+.unten{
+width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+}
+
+.quiz{
+width:580px;
+background:linear-gradient(#b96dff,#8846ff);
+border-radius:25px;
+padding:20px 30px;
+color:white;
+}
+
+.option{
+display:flex;
+align-items:center;
+font-size:25px;
+font-weight:bold;
+margin:25px 0;
+}
+
+.option input{
+width:32px;
+height:32px;
+margin-right:25px;
+cursor:pointer;
+}
+
+.weiter{
+width:500px;
+height:95px;
+border:none;
+border-radius:20px;
+background:linear-gradient(#b96dff,#8846ff);
+font-size:75px;
+color:black;
+cursor:pointer;
+margin-bottom:10px;
+transition:.25s;
+}
+
+.weiter:hover{
+transform:scale(1.05);
+}
+
+
+/* ===== Hase mit Uhr im lila Antwortfeld ===== */
+.quiz{position:relative;padding-right:220px;}
+.quiz .hase-uhr{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:185px;z-index:2;}
+.quiz .hase-uhr img{width:100%;height:auto;display:block;border-radius:10px;}
+.quiz .option{position:relative;z-index:3;}
+@media (max-width:900px){.quiz{padding-right:190px;}.quiz .hase-uhr{width:160px;right:12px;}}
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+
+</header>
+
+<div class="info">
+
+Ihr steht in der Burgstraße. Geht ein kleines Stückchen bergab: rechter Hand steht das bekannte <b>FEMBOHAUS.</b><br><br>
+
+Kaufmannshaus, patrizisches Wohnpalais, Landkartenverlag, Museum – das Fembohaus hat eine reiche Geschichte und viele Gesichter. Philipp van Oyrl, ein Kaufmann aus den Niederlanden, errichtete das Haus zu Füßen der Kaiserburg zwischen 1591 und 1596. Im 17. Jahrhundert ließ es der Patrizier Christoph Jakob Behaim zu einem glanzvollen Wohnpalais umgestalten. Im 18. und 19. Jahrhundert entstanden hier Millionen in Kupfer gestochene Landkarten. Anfang des 19. Jahrhunderts erwarb Georg Christoph Franz Fembo das Haus, das 1928 in den Besitz der Stadt Nürnberg überging und seit 1953 als Museum dient. Es zeigt regelmäßig Werke von Albrecht Dürer.
+
+<br><br>
+
+<b>4. Frage:</b> Auf dem Fembohaus ist ein Zeitmesser angebracht. Welche Zahlenart zeigt dieser?
+
+</div>
+
+<div class="unten">
+
+<div class="quiz">
+<div class="hase-uhr"><img src="hase-mit-uhr.png" alt="Hase mit Uhr"></div>
+
+<label class="option">
+<input type="radio" name="frage6" value="römisch">
+römisch
+</label>
+
+<label class="option">
+<input type="radio" name="frage6" value="arabisch">
+arabisch
+</label>
+
+<label class="option">
+<input type="radio" name="frage6" value="chinesisch">
+chinesisch
+</label>
+
+</div>
+
+<button class="weiter" onclick="weiter()">
+&#10140;
+</button>
+
+</div>
+
+<script>
+
+function weiter(){
+
+let antwort=document.querySelector('input[name="frage6"]:checked');
+
+if(!antwort){
+alert("Bitte wähle eine Antwort aus.");
+return;
+}
+
+localStorage.setItem("q4", antwort.value);
+
+window.location.href="seite7.html";
+
+}
+
+</script>
+
+
+<!-- Kleine Hasenstimme bei jeder Antwortauswahl -->
+<audio id="haseAntwortAudio" preload="auto">
+    <source src="hase-spanisch.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+(function(){
+    const audio = document.getElementById("haseAntwortAudio");
+
+    document.querySelectorAll('input[name="frage6"]').forEach(function(option){
+        option.addEventListener("change", function(){
+            audio.currentTime = 0;
+            audio.play().catch(function(){});
+        });
+    });
+})();
+</script>
+
+
+</body>
+</html>

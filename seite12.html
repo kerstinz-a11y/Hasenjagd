@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hasenjagd - Seite 12</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background-image:url("hintergrund.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+header{
+    height:70px;
+    background:#1f1f1f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:24px;
+    font-family:Georgia,serif;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.textbox{
+    width:52%;
+    margin:15px 0 15px 4%;
+
+    background:#222;
+    color:white;
+
+    padding:16px;
+
+    font-size:27px;
+    font-weight:bold;
+    line-height:1.25;
+}
+
+.unten{
+    width:92%;
+    margin:0 4%;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    gap:28px;
+}
+
+.quizbox{
+    width:52%;
+
+    background:linear-gradient(#b96dff,#8846ff);
+
+    border-radius:25px;
+
+    padding:20px 25px;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+
+    margin:20px 0;
+
+    font-size:24px;
+    font-weight:bold;
+    color:white;
+}
+
+.option input{
+    width:30px;
+    height:30px;
+
+    margin-right:22px;
+
+    cursor:pointer;
+}
+
+.rechts{
+    width:32%;
+    text-align:left;
+}
+
+.rechts img{
+    width:308.0px;
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:6px;
+}
+
+.pfeilbereich{
+    width:92%;
+    margin:15px auto;
+}
+
+.weiter{
+    width:450px;
+    height:85px;
+
+    border:none;
+    border-radius:20px;
+
+    background:linear-gradient(#b96dff,#8846ff);
+
+    font-size:65px;
+    color:black;
+
+    cursor:pointer;
+    transition:.25s;
+}
+
+.weiter:hover{
+    transform:scale(1.05);
+}
+
+@media (max-width:1400px), (max-height:900px){
+    .textbox{width:52%; margin:12px 0 12px 4%; padding:13px 16px; font-size:36px !important; line-height:1.18;}
+    .unten{width:92%; margin:0 4%; gap:24px; justify-content:flex-start;}
+    .quizbox{width:52%; padding:12px 18px;}
+    .option{margin:12px 0; font-size:clamp(18px,1.9vw,23px);}
+    .option input{width:26px; height:26px; margin-right:15px;}
+    .rechts{width:32%; text-align:left; justify-content:flex-start;}
+    .rechts img{width:286.0px; height:310px;}
+    .pfeilbereich{width:92%; margin:10px 4%;}
+    .weiter{width:clamp(260px,28vw,360px); height:clamp(62px,9vh,78px); font-size:clamp(48px,5vw,62px);}
+}
+
+</style>
+
+<style id="tablet-fit-style">
+/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+html{width:100%;height:100%;overflow:hidden;background-image:url("hintergrund.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;}
+body{transform-origin:top left;}
+#tabletFitLayer{transform-origin:top left;}
+</style>
+<script>
+(function(){
+  function fit(){
+    var body=document.body;
+    if(!body) return;
+    var layer=document.getElementById('tabletFitLayer');
+    if(!layer){
+      layer=document.createElement('div');
+      layer.id='tabletFitLayer';
+      while(body.firstChild) layer.appendChild(body.firstChild);
+      body.appendChild(layer);
+    }
+    layer.style.transform='none';
+    layer.style.width='100%';
+    layer.style.minHeight='0';
+    layer.style.height='auto';
+    body.style.background='transparent';
+    body.style.overflow='hidden';
+    var vw=window.innerWidth, vh=window.innerHeight;
+    var r=layer.getBoundingClientRect();
+    var naturalW=Math.max(layer.scrollWidth,r.width,1);
+    var naturalH=Math.max(layer.scrollHeight,r.height,1);
+    var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+    if(!isFinite(scale)||scale<=0) scale=1;
+    layer.style.transform='scale('+scale+')';
+    layer.style.width=(100/scale)+'%';
+  }
+  window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+  window.addEventListener('resize',function(){setTimeout(fit,50);});
+  window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
+  var observer=new MutationObserver(function(){clearTimeout(window.__fitTimer);window.__fitTimer=setTimeout(fit,80);});
+  window.addEventListener('load',function(){observer.observe(document.body,{childList:true,subtree:true});});
+})();
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
+
+</header>
+
+
+<div class="textbox">
+
+Nun nehmt ihr die Bergstraße bergab bis ihr auf das große DÜRER-DENKMAL auf dem Albrecht-Dürer-Platz trefft.<br>
+
+Hoch oben von seinem Sockel blickt Albrecht Dürer über den Albrecht-Dürer-Platz. Die Grundsteinlegung zu seinem Denkmal anlässlich des 300. Todestages im Jahr 1828 war ebenso ein nationales Ereignis wie die feierliche Einweihung im Jahr 1840. Das Albrecht-Dürer-Denkmal war das erste Denkmal in Deutschland, das einem Künstler zu Ehren aufgestellt wurde, entworfen von Christian Rauch und gegossen von Jacob Burgschmiet.
+
+<br><br>
+
+<b>9. Frage:</b> Was hält Dürer in seiner Hand?
+
+</div>
+
+
+<div class="unten">
+
+
+<div class="quizbox">
+
+
+<label class="option">
+
+<input type="radio" name="antwort" value="kreuz">
+
+Kreuz, Buch und Feder
+
+</label>
+
+
+<label class="option">
+
+<input type="radio" name="antwort" value="nichts">
+
+Nichts
+
+</label>
+
+
+<label class="option">
+
+<input type="radio" name="antwort" value="pinsel, stift und lorbeerzweig">
+
+Pinsel, Stift und Lorbeerzweig
+
+</label>
+
+
+</div>
+
+
+<div class="rechts">
+
+<img src="duererdenkmal-neu.png">
+
+</div>
+
+
+</div>
+
+
+<div class="pfeilbereich">
+
+<button class="weiter" onclick="weiter()">
+
+&#10140;
+
+</button>
+
+</div>
+
+
+<script>
+
+function weiter(){
+
+let antwort=document.querySelector('input[name="antwort"]:checked');
+
+if(!antwort){
+
+alert("Bitte wähle eine Antwort aus.");
+
+return;
+
+}
+
+localStorage.setItem("q9", antwort.value.toLowerCase());
+
+window.location.href="seite13.html";
+
+}
+
+</script>
+
+
+</body>
+</html>
