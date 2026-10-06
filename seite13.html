@@ -256,8 +256,12 @@ html,body{
     }
     layer.style.transform='none';
     layer.style.width='100%';
-    layer.style.minHeight='0';
+    layer.style.minHeight='100vh';
     layer.style.height='auto';
+    layer.style.backgroundImage='url("hintergrund.jpg")';
+    layer.style.backgroundSize='cover';
+    layer.style.backgroundPosition='center';
+    layer.style.backgroundRepeat='no-repeat';
     body.style.background='transparent';
     body.style.overflow='hidden';
     var vw=window.innerWidth, vh=window.innerHeight;

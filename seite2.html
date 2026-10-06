@@ -107,6 +107,18 @@ header{
 
 /* 10-Zoll-Tablet / Fully Kiosk */
 @media (max-width:900px){
+    /* Weiter-Pfeil im Fully Kiosk sicher sichtbar */
+    .weiter{
+        position:fixed;
+        right:18px;
+        bottom:16px;
+        z-index:20;
+        margin:0;
+        width:240px;
+        height:62px;
+        font-size:48px;
+    }
+
     header{height:60px;font-size:20px;}
     .info{
         width:88%;
