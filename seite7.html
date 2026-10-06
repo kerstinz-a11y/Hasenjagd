@@ -133,6 +133,46 @@ header{
     .bilder img{width:clamp(95px,10vw,125px);height:clamp(210px,28vh,260px);}
     .rechts .bilder{align-self:flex-start;}
 }
+
+/* ===== Weiter-Pfeil direkt unten auf dem Hasen ===== */
+.hase-heilig{
+    position:relative;
+    width:clamp(190px,22vw,300px);
+    margin-top:12px;
+}
+.hase-heilig img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+.hase-heilig .weiter-auf-hase{
+    position:absolute;
+    left:50%;
+    bottom:10px;
+    transform:translateX(-50%);
+    width:75%;
+    height:52px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(#b96dff,#8846ff);
+    font-size:42px;
+    line-height:1;
+    color:#000;
+    cursor:pointer;
+    z-index:5;
+}
+@media (max-width:900px){
+    .hase-heilig{
+        width:190px;
+        margin-top:8px;
+    }
+    .hase-heilig .weiter-auf-hase{
+        bottom:8px;
+        height:46px;
+        font-size:36px;
+    }
+}
+
 </style>
 <style id="tablet-fit-style">
 /* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
@@ -220,7 +260,7 @@ body{transform-origin:top left;}
 
         </div>
 
-        <button class="weiter" onclick="weiter()">&#10140;</button>
+        
 
     </div>
 
@@ -233,6 +273,7 @@ body{transform-origin:top left;}
 
         <div class="hase-heilig">
             <img src="hase-mit-heiligenschein.png" alt="Hase mit Heiligenschein">
+            <button class="weiter-auf-hase" onclick="weiter()" aria-label="Weiter">&#10140;</button>
         </div>
 
     </div>

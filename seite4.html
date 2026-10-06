@@ -86,34 +86,20 @@ transform:scale(1.05);
 }
 
 
-/* ===== Neuer Hase rechts ===== */
-.hase-rechts{
+/* Hase auf Seite 4 – Position für 10-Zoll-Tablet / Fully Kiosk */
+.hasenbereich{
     position:absolute;
-    right:35px;
-    top:115px;
-    width:360px;
-    z-index:2;
+    top:330px;
+    right:28px;
+    width:240px;
+    z-index:5;
+    pointer-events:none;
 }
-.hase-rechts img{
+.hasenbereich img{
+    display:block;
     width:100%;
     height:auto;
-    display:block;
-    border:5px solid black;
     border-radius:6px;
-}
-@media (max-width:1100px){
-    .hase-rechts{
-        right:18px;
-        top:105px;
-        width:290px;
-    }
-}
-@media (max-width:900px){
-    .hase-rechts{
-        right:12px;
-        top:90px;
-        width:240px;
-    }
 }
 
 </style>
@@ -169,11 +155,6 @@ HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
 
 </header>
 
-<!-- Neuer Hase rechts -->
-<div class="hase-rechts">
-    <img src="hase-liegend.png" alt="Liegender Hase">
-</div>
-
 
 <div class="info">
 
@@ -185,6 +166,10 @@ Tragt diese hier ein:
 
 </div>
 
+
+<div class="hasenbereich">
+<img src="hase-im-lauf.png" alt="Der laufende Hase">
+</div>
 
 <div class="eingabe">
 
@@ -203,33 +188,6 @@ inputmode="numeric">
 
 </button>
 
-
-
-<!-- Hase-Audio -->
-<audio id="haseAudio" preload="auto">
-    <source src="audio-seite3-hase.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-(function(){
-    const audio = document.getElementById("haseAudio");
-
-    function starten(){
-        audio.play().catch(function(){});
-    }
-
-    window.addEventListener("load", function(){
-        setTimeout(starten, 150);
-    });
-
-    /* Falls Fully Kiosk Autoplay blockiert: erster Tipp startet das Audio. */
-    document.addEventListener("pointerdown", function(){
-        if(audio.paused){
-            audio.play().catch(function(){});
-        }
-    }, {once:true});
-})();
-</script>
 
 <script>
 
