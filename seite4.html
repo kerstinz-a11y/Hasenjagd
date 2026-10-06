@@ -90,7 +90,7 @@ transform:scale(1.05);
 .hase-rechts{
     position:absolute;
     right:35px;
-    top:115px;
+    top:285px;
     width:360px;
     z-index:2;
 }
@@ -104,14 +104,14 @@ transform:scale(1.05);
 @media (max-width:1100px){
     .hase-rechts{
         right:18px;
-        top:105px;
+        top:270px;
         width:290px;
     }
 }
 @media (max-width:900px){
     .hase-rechts{
         right:12px;
-        top:90px;
+        top:255px;
         width:240px;
     }
 }
@@ -222,6 +222,12 @@ inputmode="numeric">
         setTimeout(starten, 150);
     });
 
+    /* Falls Fully Kiosk Autoplay blockiert: erster Tipp startet das Audio. */
+    document.addEventListener("pointerdown", function(){
+        if(audio.paused){
+            audio.play().catch(function(){});
+        }
+    }, {once:true});
 })();
 </script>
 
