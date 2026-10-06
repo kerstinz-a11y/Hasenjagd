@@ -147,23 +147,12 @@ header h1{
             START
         </button>
 
-        <audio id="audioSeite1" preload="metadata" autoplay="false">
-            <source src="audioseite1.mp3" type="audio/mpeg">
-        </audio>
+        <!-- Das Audio wird absichtlich ERST beim Klick auf START erzeugt. -->
     </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-    const audio = document.getElementById('audioSeite1');
-    if(audio){
-        audio.pause();
-        audio.currentTime = 0;
-    }
-});
-
 function startRallye(){
-    const audio = document.getElementById('audioSeite1');
     const button = document.getElementById('startButton');
 
     if(button.disabled) return;
@@ -171,10 +160,11 @@ function startRallye(){
     button.disabled = true;
     button.textContent = '▶ START';
 
-    audio.pause();
-    audio.currentTime = 0;
+    // Wichtig: Das Audio wird erst durch den echten START-Klick erzeugt.
+    // Dadurch kann es auf der Index-Seite niemals beim Laden automatisch starten.
+    const audio = new Audio('audioseite1.mp3');
+    audio.preload = 'auto';
 
-    // Erst wenn das Audio wirklich fertig ist, geht es zur ersten Rallye-Seite.
     audio.onended = function(){
         window.location.href = 'seite2.html';
     };
