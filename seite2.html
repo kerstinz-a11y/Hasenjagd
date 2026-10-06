@@ -90,7 +90,7 @@ header{
 
 .weiter{
     display:block;
-    margin:18px auto 0;
+    margin:6px auto 0;
     width:360px;
     height:75px;
     background:linear-gradient(#b96dff,#8846ff);
@@ -107,18 +107,6 @@ header{
 
 /* 10-Zoll-Tablet / Fully Kiosk */
 @media (max-width:900px){
-    /* Weiter-Pfeil im Fully Kiosk sicher sichtbar */
-    .weiter{
-        position:fixed;
-        right:18px;
-        bottom:16px;
-        z-index:20;
-        margin:0;
-        width:240px;
-        height:62px;
-        font-size:48px;
-    }
-
     header{height:60px;font-size:20px;}
     .info{
         width:88%;
@@ -223,12 +211,6 @@ function audioStarten(){
 window.addEventListener("load", function(){
     setTimeout(audioStarten, 150);
 });
-
-document.addEventListener("pointerdown", function(){
-    if(audio.paused){
-        audio.play().catch(function(){});
-    }
-}, {once:true});
 
 function weiter(){
 
