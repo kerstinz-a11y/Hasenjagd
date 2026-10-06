@@ -147,13 +147,21 @@ header h1{
             START
         </button>
 
-        <audio id="audioSeite1" preload="auto">
+        <audio id="audioSeite1" preload="metadata" autoplay="false">
             <source src="audioseite1.mp3" type="audio/mpeg">
         </audio>
     </div>
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(){
+    const audio = document.getElementById('audioSeite1');
+    if(audio){
+        audio.pause();
+        audio.currentTime = 0;
+    }
+});
+
 function startRallye(){
     const audio = document.getElementById('audioSeite1');
     const button = document.getElementById('startButton');
