@@ -156,49 +156,38 @@ header{
 const eingabe = document.getElementById('ziffer3');
 const hinweis = document.getElementById('eingabeHinweis');
 const audio = document.getElementById('duererAudio');
+const weiter = document.querySelector('.weiter');
 let richtig = false;
-
-// Ganz wichtig: Beim Aufruf von Seite 17 bleibt das Audio gestoppt.
 audio.pause();
 audio.currentTime = 0;
-
 eingabe.addEventListener('input', function(){
     this.value = this.value.replace(/[^0-9]/g,'').slice(0,1);
-
     if(this.value === ''){
+        richtig = false;
         hinweis.textContent = 'Bitte hier eintragen';
         hinweis.classList.remove('falsch');
+        weiter.style.visibility = 'hidden';
         audio.pause();
         audio.currentTime = 0;
         return;
     }
-
     if(this.value === '7'){
         richtig = true;
         hinweis.textContent = 'Richtig!';
         hinweis.classList.remove('falsch');
         this.disabled = true;
-
-        // Das Feld "Willkommen zurück im Portal" erscheint erst jetzt.
-        document.querySelector('.weiter').style.visibility = 'visible';
-
-        // Erst die richtige Zahl 7 startet das Dürer-Audio.
+        weiter.style.visibility = 'visible';
         audio.pause();
         audio.currentTime = 0;
         const playPromise = audio.play();
-        if(playPromise !== undefined){
-            playPromise.catch(function(){});
-        }
-
-    }else{
+        if(playPromise !== undefined){ playPromise.catch(function(){}); }
+    } else {
         richtig = false;
         hinweis.textContent = 'Falsch – bitte noch einmal versuchen!';
         hinweis.classList.add('falsch');
-
-        // Bei einer falschen Zahl darf kein Audio laufen.
+        weiter.style.visibility = 'hidden';
         audio.pause();
         audio.currentTime = 0;
-
         setTimeout(function(){
             if(!richtig){
                 eingabe.value = '';
@@ -206,7 +195,7 @@ eingabe.addEventListener('input', function(){
                 hinweis.classList.remove('falsch');
                 eingabe.focus();
             }
-        }, 1200);
+        },1200);
     }
 });
 </script>
