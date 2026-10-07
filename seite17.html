@@ -148,7 +148,7 @@ header{
     <div class="weiter" aria-label="Willkommen zurück im Portal">Willkommen zurück im Portal</div>
 </div>
 
-<audio id="duererAudio" preload="auto">
+<audio id="duererAudio" preload="none">
     <source src="audioseite17.mp3" type="audio/mpeg">
 </audio>
 
@@ -158,11 +158,18 @@ const hinweis = document.getElementById('eingabeHinweis');
 const audio = document.getElementById('duererAudio');
 let richtig = false;
 
+// Ganz wichtig: Beim Aufruf von Seite 17 bleibt das Audio gestoppt.
+audio.pause();
+audio.currentTime = 0;
+
 eingabe.addEventListener('input', function(){
     this.value = this.value.replace(/[^0-9]/g,'').slice(0,1);
+
     if(this.value === ''){
         hinweis.textContent = 'Bitte hier eintragen';
         hinweis.classList.remove('falsch');
+        audio.pause();
+        audio.currentTime = 0;
         return;
     }
 
@@ -171,13 +178,27 @@ eingabe.addEventListener('input', function(){
         hinweis.textContent = 'Richtig!';
         hinweis.classList.remove('falsch');
         this.disabled = true;
-        // Das Feld erscheint erst zusammen mit dem Audio.
+
+        // Das Feld "Willkommen zurück im Portal" erscheint erst jetzt.
         document.querySelector('.weiter').style.visibility = 'visible';
+
+        // Erst die richtige Zahl 7 startet das Dürer-Audio.
+        audio.pause();
         audio.currentTime = 0;
-        audio.play().catch(function(){});
+        const playPromise = audio.play();
+        if(playPromise !== undefined){
+            playPromise.catch(function(){});
+        }
+
     }else{
+        richtig = false;
         hinweis.textContent = 'Falsch – bitte noch einmal versuchen!';
         hinweis.classList.add('falsch');
+
+        // Bei einer falschen Zahl darf kein Audio laufen.
+        audio.pause();
+        audio.currentTime = 0;
+
         setTimeout(function(){
             if(!richtig){
                 eingabe.value = '';
@@ -188,7 +209,6 @@ eingabe.addEventListener('input', function(){
         }, 1200);
     }
 });
-
 </script>
 </body>
 </html>
