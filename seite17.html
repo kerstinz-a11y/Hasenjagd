@@ -7,325 +7,164 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html{width:100%;height:100%;overflow:hidden;background:url("hintergrund.jpg") center/cover no-repeat;}
-body{
-    width:100%;height:100vh;overflow:hidden;
-    font-family:Arial,sans-serif;
-    background:transparent;
-    display:flex;flex-direction:column;align-items:center;
-}
-header{
-    width:100%;height:70px;flex-shrink:0;
-    background:#000;
-    display:flex;justify-content:center;align-items:center;
-    color:white;
-    font-family:Georgia,serif;font-size:28px;font-weight:bold;
-    white-space:nowrap;
-    text-shadow:1px 1px 0 #777;
-}
-.hauptbereich{
-    position:relative;width:100%;height:calc(100vh - 70px);flex:1;min-height:0;
-}
-.info{
-    position:absolute;left:15px;top:12px;width:1180px;height:155px;
-    background:#7333a6;color:white;border:2px solid #222;border-radius:22px;
-    padding:27px 18px 18px;
-    font-size:27px;line-height:1.25;text-align:center;
-}
-.zahlenfeld{
-    position:absolute;left:24px;top:232px;width:216px;height:223px;
-}
+body{width:100%;height:100vh;overflow:hidden;font-family:Arial,sans-serif;background:transparent;display:flex;flex-direction:column;align-items:center;}
+header{width:100%;height:70px;flex-shrink:0;background:#000;display:flex;justify-content:center;align-items:center;color:white;font-family:Georgia,serif;font-size:28px;font-weight:bold;white-space:nowrap;text-shadow:1px 1px 0 #777;}
+.hauptbereich{position:relative;width:100%;height:calc(100vh - 70px);flex:1;min-height:0;}
+.info{position:absolute;left:15px;top:12px;width:1180px;height:155px;background:#7333a6;color:white;border:2px solid #222;border-radius:22px;padding:27px 18px 18px;font-size:27px;line-height:1.25;text-align:center;}
+.zahlenfeld{position:absolute;left:24px;top:232px;width:216px;height:223px;}
 .zahlenfeld img{width:216px;height:auto;display:block;}
-.zahlen{
-    position:absolute;left:298px;top:233px;
-    display:flex;gap:36px;align-items:flex-start;
-}
-.zahl{
-    width:180px;height:157px;
-    background:#7333a6;color:white;
-    border:2px solid white;border-radius:24px;
-    display:flex;justify-content:center;align-items:center;
-    font-size:62px;font-weight:bold;
-    box-shadow:0 3px 10px rgba(0,0,0,.3);
-}
-.eingabe-wrap{
-    position:absolute;left:742px;top:233px;width:180px;height:215px;
-    display:flex;flex-direction:column;align-items:center;
-}
-.eingabe-wrap:before{
-    content:"";
-    position:absolute;left:58px;top:-56px;
-    width:50px;height:58px;background:#000;
-    clip-path:polygon(0 0,100% 0,100% 50%,100% 50%,100% 50%,50% 100%,0 50%);
-    border:1px solid white;
-    filter:drop-shadow(0 0 0 white);
-}
-#ziffer3{
-    width:180px;height:157px;
-    background:#000;color:white;
-    border:2px solid #111;border-radius:24px;
-    outline:none;
-    text-align:center;
-    font-size:62px;font-weight:bold;
-    padding:0;
-}
+.zahlen{position:absolute;left:298px;top:233px;display:flex;gap:36px;align-items:flex-start;}
+.zahl{width:180px;height:157px;background:#7333a6;color:white;border:2px solid white;border-radius:24px;display:flex;justify-content:center;align-items:center;font-size:62px;font-weight:bold;box-shadow:0 3px 10px rgba(0,0,0,.3);}
+.eingabe-wrap{position:absolute;left:742px;top:233px;width:180px;height:215px;display:flex;flex-direction:column;align-items:center;}
+.eingabe-wrap:before{content:"";position:absolute;left:58px;top:-56px;width:50px;height:58px;background:#000;clip-path:polygon(0 0,100% 0,100% 50%,100% 50%,100% 50%,50% 100%,0 50%);border:1px solid white;}
+#ziffer3{width:180px;height:157px;background:#000;color:white;border:2px solid #111;border-radius:24px;outline:none;text-align:center;font-size:62px;font-weight:bold;padding:0;}
 #ziffer3:focus{border-color:white;}
-.eingabe-hinweis{
-    margin-top:14px;color:white;
-    font-size:22px;font-weight:bold;text-align:center;
-    white-space:nowrap;
-}
+.eingabe-hinweis{margin-top:14px;color:white;font-size:22px;font-weight:bold;text-align:center;white-space:nowrap;}
 .eingabe-hinweis.falsch{color:#fff;}
-.duerer{
-    position:absolute;left:1000px;top:246px;width:258px;height:361px;
-}
+.duerer{position:absolute;left:1000px;top:246px;width:258px;height:361px;}
 .duerer img{width:258px;height:361px;object-fit:cover;display:block;}
-.weiter{
-    position:absolute;left:317px;top:514px;width:536px;height:107px;
-    background:#7333a6;color:white;border:2px solid white;border-radius:17px;
-    font-size:30px;font-weight:bold;
-    display:flex;justify-content:center;align-items:center;
-    text-align:center;
-    z-index:20;
-    pointer-events:none;
-    cursor:default;
-    visibility:hidden;
-}
-
-/* ===== AUTOMATISCHE TABLET-ANPASSUNG FÜR FULLY KIOSK ===== */
+.weiter{position:absolute;left:317px;top:514px;width:536px;height:107px;background:#7333a6;color:white;border:2px solid white;border-radius:17px;font-size:30px;font-weight:bold;display:flex;justify-content:center;align-items:center;text-align:center;z-index:20;pointer-events:none;cursor:default;visibility:hidden;}
 #tabletFitLayer{transform-origin:top left;}
 @media (max-width:1250px){
-    header{font-size:24px;}
-    .info{left:15px;width:1180px;height:155px;font-size:27px;}
-    .duerer{left:auto;right:30px;width:220px;height:310px;}
-    .duerer img{width:220px;height:310px;}
+header{font-size:24px;}
+.info{left:15px;width:1180px;height:155px;font-size:27px;}
+.duerer{left:auto;right:30px;width:220px;height:310px;}
+.duerer img{width:220px;height:310px;}
 }
 </style>
 
 <script>
 (function(){
-  function fit(){
-    var body=document.body;
-    if(!body)return;
-
-    var layer=document.getElementById('tabletFitLayer');
-
-    if(!layer){
-      layer=document.createElement('div');
-      layer.id='tabletFitLayer';
-
-      while(body.firstChild)
-        layer.appendChild(body.firstChild);
-
-      body.appendChild(layer);
-    }
-
-    layer.style.transform='none';
-    layer.style.width='100%';
-    layer.style.minHeight='0';
-    layer.style.height='auto';
-
-    body.style.background='transparent';
-    body.style.overflow='hidden';
-
-    var vw=window.innerWidth;
-    var vh=window.innerHeight;
-    var r=layer.getBoundingClientRect();
-
-    var naturalW=Math.max(layer.scrollWidth,r.width,1);
-    var naturalH=Math.max(layer.scrollHeight,r.height,1);
-
-    var scale=Math.min(
-        1,
-        (vw-12)/naturalW,
-        (vh-12)/naturalH
-    );
-
-    if(!isFinite(scale)||scale<=0)
-        scale=1;
-
-    layer.style.transform='scale('+scale+')';
-    layer.style.width=(100/scale)+'%';
-  }
-
-  window.addEventListener('load',function(){
-    setTimeout(fit,50);
-    setTimeout(fit,300);
-  });
-
-  window.addEventListener('resize',function(){
-    setTimeout(fit,50);
-  });
-
-  window.addEventListener('orientationchange',function(){
-    setTimeout(fit,300);
-  });
+function fit(){
+var body=document.body;if(!body)return;
+var layer=document.getElementById('tabletFitLayer');
+if(!layer){
+layer=document.createElement('div');layer.id='tabletFitLayer';
+while(body.firstChild)layer.appendChild(body.firstChild);
+body.appendChild(layer);
+}
+layer.style.transform='none';
+layer.style.width='100%';
+layer.style.minHeight='0';
+layer.style.height='auto';
+body.style.background='transparent';
+body.style.overflow='hidden';
+var vw=window.innerWidth,vh=window.innerHeight,r=layer.getBoundingClientRect();
+var naturalW=Math.max(layer.scrollWidth,r.width,1);
+var naturalH=Math.max(layer.scrollHeight,r.height,1);
+var scale=Math.min(1,(vw-12)/naturalW,(vh-12)/naturalH);
+if(!isFinite(scale)||scale<=0)scale=1;
+layer.style.transform='scale('+scale+')';
+layer.style.width=(100/scale)+'%';
+}
+window.addEventListener('load',function(){setTimeout(fit,50);setTimeout(fit,300);});
+window.addEventListener('resize',function(){setTimeout(fit,50);});
+window.addEventListener('orientationchange',function(){setTimeout(fit,300);});
 })();
 </script>
 </head>
 
 <body>
-
-<header>
-HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER
-</header>
+<header>HASENJAGD – AUF DEN SPUREN VON ALBRECHT DÜRER</header>
 
 <div class="hauptbereich">
 
-    <div class="info">
-        Die 3. Ziffer prangt am altehrwürdigen Tucherpalais – dem Gebäude, in dem sich auch das PORTAL Nürnberg befindet. Haltet euch etwas rechts, schaut nach oben und ihr werdet die einstellige Ziffer an der Fassade erblicken. Tragt sie in das schwarze Feld ein.
-    </div>
+<div class="info">
+Die 3. Ziffer prangt am altehrwürdigen Tucherpalais – dem Gebäude, in dem sich auch das PORTAL Nürnberg befindet. Haltet euch etwas rechts, schaut nach oben und ihr werdet die einstellige Ziffer an der Fassade erblicken. Tragt sie in das schwarze Feld ein.
+</div>
 
-    <div class="zahlenfeld">
-        <img src="zahlenfeld.png" alt="Zahlenfeld">
-    </div>
+<div class="zahlenfeld">
+<img src="zahlenfeld.png" alt="Zahlenfeld">
+</div>
 
-    <div class="zahlen">
-        <div class="zahl">1</div>
-        <div class="zahl">8</div>
-    </div>
+<div class="zahlen">
+<div class="zahl">1</div>
+<div class="zahl">8</div>
+</div>
 
-    <div class="eingabe-wrap">
-        <input
-            id="ziffer3"
-            type="text"
-            inputmode="numeric"
-            maxlength="1"
-            aria-label="3. Ziffer"
-            autocomplete="off"
-        >
+<div class="eingabe-wrap">
+<input id="ziffer3" type="text" inputmode="numeric" maxlength="1" aria-label="3. Ziffer" autocomplete="off">
+<div id="eingabeHinweis" class="eingabe-hinweis">Bitte hier eintragen</div>
+</div>
 
-        <div id="eingabeHinweis" class="eingabe-hinweis">
-            Bitte hier eintragen
-        </div>
-    </div>
+<div class="duerer">
+<img src="duerer-neu.png" alt="Albrecht Dürer">
+</div>
 
-    <div class="duerer">
-        <img src="duerer-neu.png" alt="Albrecht Dürer">
-    </div>
-
-    <div class="weiter" aria-label="Willkommen zurück im Portal">
-        Willkommen zurück im Portal
-    </div>
+<div class="weiter" aria-label="Willkommen zurück im Portal">
+Willkommen zurück im Portal
+</div>
 
 </div>
 
-<!-- WICHTIG: Audio wird NICHT beim Laden abgespielt -->
 <audio id="duererAudio" preload="none">
-    <source src="audioseite17.mp3" type="audio/mpeg">
+<source src="audioseite17.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+const eingabe=document.getElementById('ziffer3');
+const hinweis=document.getElementById('eingabeHinweis');
+const audio=document.getElementById('duererAudio');
+let richtig=false;
 
-const eingabe = document.getElementById('ziffer3');
-const hinweis = document.getElementById('eingabeHinweis');
-const audio = document.getElementById('duererAudio');
-
-let richtig = false;
-
-/*
-   GANZ WICHTIG:
-   Beim Öffnen von Seite 17 bleibt das Audio gestoppt.
-*/
 audio.pause();
-audio.currentTime = 0;
+audio.currentTime=0;
 
+eingabe.addEventListener('input',function(){
 
-eingabe.addEventListener('input', function(){
+this.value=this.value.replace(/[^0-9]/g,'').slice(0,1);
 
-    /* Nur eine Ziffer zulassen */
-    this.value = this.value
-        .replace(/[^0-9]/g,'')
-        .slice(0,1);
+if(this.value===''){
+hinweis.textContent='Bitte hier eintragen';
+hinweis.classList.remove('falsch');
+audio.pause();
+audio.currentTime=0;
+return;
+}
 
+if(this.value==='7'){
 
-    /* Feld wieder leer */
-    if(this.value === ''){
+richtig=true;
+hinweis.textContent='Richtig!';
+hinweis.classList.remove('falsch');
+this.disabled=true;
 
-        hinweis.textContent = 'Bitte hier eintragen';
-        hinweis.classList.remove('falsch');
+document.querySelector('.weiter').style.visibility='visible';
 
-        audio.pause();
-        audio.currentTime = 0;
+audio.pause();
+audio.currentTime=0;
 
-        return;
-    }
+const playPromise=audio.play();
 
+if(playPromise!==undefined){
+playPromise.catch(function(){});
+}
 
-    /* ===== RICHTIGE ZAHL: 7 ===== */
+}else{
 
-    if(this.value === '7'){
+richtig=false;
+hinweis.textContent='Falsch – bitte noch einmal versuchen!';
+hinweis.classList.add('falsch');
 
-        richtig = true;
+audio.pause();
+audio.currentTime=0;
 
-        hinweis.textContent = 'Richtig!';
-        hinweis.classList.remove('falsch');
+setTimeout(function(){
 
-        /* Eingabe sperren */
-        this.disabled = true;
+if(!richtig){
 
-        /*
-           Das Feld „Willkommen zurück im Portal“
-           erscheint ERST jetzt.
-        */
-        document.querySelector('.weiter').style.visibility = 'visible';
+eingabe.value='';
+hinweis.textContent='Bitte hier eintragen';
+hinweis.classList.remove('falsch');
+eingabe.focus();
 
+}
 
-        /*
-           ERST nachdem die richtige Zahl 7 eingegeben wurde,
-           startet das Dürer-Audio.
-        */
-        audio.pause();
-        audio.currentTime = 0;
+},1200);
 
-        const playPromise = audio.play();
-
-        if(playPromise !== undefined){
-            playPromise.catch(function(){});
-        }
-
-    }
-
-
-    /* ===== FALSCHE ZAHL ===== */
-
-    else{
-
-        richtig = false;
-
-        hinweis.textContent =
-            'Falsch – bitte noch einmal versuchen!';
-
-        hinweis.classList.add('falsch');
-
-
-        /* Bei einer falschen Zahl darf kein Audio laufen */
-        audio.pause();
-        audio.currentTime = 0;
-
-
-        /*
-           Nach kurzer Zeit Eingabe wieder freigeben.
-        */
-        setTimeout(function(){
-
-            if(!richtig){
-
-                eingabe.value = '';
-
-                hinweis.textContent =
-                    'Bitte hier eintragen';
-
-                hinweis.classList.remove('falsch');
-
-                eingabe.focus();
-            }
-
-        },1200);
-
-    }
+}
 
 });
-
 </script>
 
 </body>
